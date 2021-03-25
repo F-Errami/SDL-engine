@@ -6,9 +6,7 @@
 #include <SDL2/SDL_image.h>
 #include "GameObject.hpp"
 #include "Map.hpp"
-#include "ECS.hpp"
-#include "Components.hpp"
-
+#include "ECS/Coordinator.hpp"
 class Game
 {
 public:
