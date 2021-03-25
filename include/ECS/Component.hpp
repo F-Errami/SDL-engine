@@ -97,10 +97,10 @@ public:
         assert(mComponentTypes.find(typeName) == mComponentTypes.end() && "Registering component type more than once.");
 
         // Add this component type to the component type map
-        mComponentTypes.insert({typeName, mNextComponentType});
+         mComponentTypes.insert({typeName, mNextComponentType});
 
         // Create a ComponentArray pointer and add it to the component arrays map
-        mComponentArrays.insert({typeName, std::make_shared<ComponentArray<T> >()});
+       mComponentArrays.insert({typeName, std::make_shared<ComponentArray<T> >()});
 
         // Increment the value so that the next component registered will be different
         ++mNextComponentType;
