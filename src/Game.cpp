@@ -7,10 +7,11 @@ GameObject *enemy;
 Map *map;
 
 SDL_Renderer *Game::renderer= nullptr;
+/*
+Manager manager;
+auto& newPlayer(manager.addEntity());
 
-
-
-SDL_Rect src,dest;
+*/
 
 
 
@@ -52,6 +53,9 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     enemy= new GameObject("images/enemy.png",50,50);
     map= new Map();
 
+   // newPlayer.addComponent<PositionComponent>();
+
+
 }
 
 void Game::handleEvent()
@@ -72,8 +76,13 @@ void Game::handleEvent()
 
 void Game::update()
 {
+ ++cnt;
  player->update();
  enemy->update();
+ /*manager.update();
+ std::cout <<newPlayer.getComponent<PostionComponent>().x() <<","<<
+       newPlayer.getComponent<PostionComponent>().y()<<std::endl
+       */
 }
 
 

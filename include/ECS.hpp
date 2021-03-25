@@ -3,33 +3,34 @@
 #ifndef SDL_ENGINE_ECS_HPP
 #define SDL_ENGINE_ECS_HPP
 
-#include <iostrem>
+#include <iostream>
 #include <memory>
 #include <bitset>
 #include <algorithm>
 #include <array>
 #include <vector>
 
-
+/*
 class Component;
 class Entity;
 
 using  ComponentID = std::size_t;
-inline ComponentID getComponenetID()
+
+inline ComponentID getComponentID()
 {
     static ComponentID lastID = 0;
     return lastID++;
 }
 
-template <typename T> inline ComponentID getComponentID()
+template <typename T > inline ComponentID getComponentTypeID() noexcept
 {
-    static ComponenentID typeID =getComponentID();
+    static ComponentID typeID =getComponentID();
     return typeID;
 }
 
 constexpr std::size_t maxComponents =32;
 using ComponentBitSet = std::bitset<maxComponents>;
-using ComponentArray = std:array<Component*,maxComponent>;
+using ComponentArray = std::array<Component*,maxComponents>;
 
 class Component
 {
@@ -56,22 +57,75 @@ public:
 
     void update()
     {
-        for (auto& c:components)  c->update();
-
-        for (auto& c:components)  c->draw();
+        for (auto& c : components)  c->update();
     }
 
-    void draw(){}
+    void draw(){
+        for (auto& c:components)  c->draw();
+    }
     bool isActive() {return active;}
     void destroy() { active= false;}
 
-    template<typeName T> bool hasComponent() const
+    template <typename T> bool hasComponent() const
     {
-        componentBitSet[getComponentID<T>];
+        componentBitSet[getComponentTypeID<T>()];
     }
 
     template <typename T,typename... TArgs>
+    T& addComponent(TArgs&&...  mArgs)
+    {
+        T* c(new T(std::forward<TArgs>(mArgs)...));
+        c->entity = this;
+        std::unique_ptr<Component> uPtr( c );
+        components.push_back(std::move(uPtr));
+
+        componentArray[getComponentTypeID<T>()]=c;
+        componentBitSet[getComponentTypeID<T>()]=true;
+
+        c->init();
+
+        return *c;
+
+    }
+
+    template <typename T> T& getComponent() const
+    {
+        auto ptr(componentArray[getComponentTypeID<T>()]);
+        return *static_cast<T*>(ptr);
+    }
 
 };
 
+
+class Manager
+{
+private :
+    std::vector<std::unique_ptr<Entity>>  entities;
+public:
+    void update()
+    {
+        for (auto& e: entities) e->update();
+    }
+    void draw()
+    {
+        for (auto& e: entities) e->draw();
+    }
+    void refresh()
+    {
+        entities.erase(std::remove_if(std::begin(entities),std::end(entities),
+                             [](const std::unique_ptr<Entity> &mEntity)
+                             {
+                                return !mEntity->isActive();
+                             }),
+                       std::end(entities));
+    }
+    Entity& addEntity()
+    {
+        Entity* e = new Entity();
+        std::unique_ptr<Entity> uPtr(e);
+        entities.push_back(std::move(uPtr));
+        return *e;
+    }
+};
+*/
 #endif //SDL_ENGINE_ECS_HPP
