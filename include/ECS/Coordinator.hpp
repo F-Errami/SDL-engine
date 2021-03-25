@@ -2,7 +2,7 @@
 #include "Component.hpp"
 #include "Entity.hpp"
 #include "System.hpp"
-#include <memory>
+#include <unordered_map>
 
 class Coordinator
 {
@@ -56,7 +56,7 @@ public:
     {
         mComponentManager->RemoveComponent<T>(entity);
 
-        auto signature = mEntityManager->GetSignature(entity);
+        Signature signature = mEntityManager->GetSignature(entity);
         signature.set(mComponentManager->GetComponentType<T>(), false);
         mEntityManager->SetSignature(entity, signature);
 

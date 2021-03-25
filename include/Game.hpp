@@ -7,6 +7,7 @@
 #include "GameObject.hpp"
 #include "Map.hpp"
 #include "ECS/Coordinator.hpp"
+
 class Game
 {
 public:

@@ -1,10 +1,9 @@
 #pragma once
-#ifndef SDL_ENGINE_SYSTEM_HPP
-#define SDL_ENGINE_SYSTEM_HPP
+
 
 #include "Component.hpp"
 #include<set>
-
+#include <unordered_map>
 
 class System
 {
@@ -23,7 +22,7 @@ public:
         assert(mSystems.find(typeName) == mSystems.end() && "Registering system more than once.");
 
         // Create a pointer to the system and return it so it can be used externally
-        auto system = std::make_shared<T>();
+        std::shared_ptr<System> system = std::make_shared<T>();
         mSystems.insert({typeName, system});
         return system;
     }
@@ -36,7 +35,7 @@ public:
         assert(mSystems.find(typeName) != mSystems.end() && "System used before registered.");
 
         // Set the signature for this system
-        mSignatures.insert( {typeName, signature} );
+      mSignatures.insert({typeName, signature});
     }
 
     void EntityDestroyed(Entity entity)
@@ -82,4 +81,4 @@ private:
 };
 
 
-#endif //SDL_ENGINE_SYSTEM_HPP
+
