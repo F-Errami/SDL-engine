@@ -13,7 +13,7 @@ class IComponentArray
     virtual void EntityDestroyed(Entity entity)
 };
 
-
+//--------------------------------------------------------------------------------------
 template <typename T>
 class IComponentArray :public IComponentArray
 {
@@ -87,7 +87,7 @@ private:
 
 
 };
-
+//--------------------------------------------------------------------------------------
 class ComponentManager
 {
 public:
