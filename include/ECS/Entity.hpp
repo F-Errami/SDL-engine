@@ -12,7 +12,7 @@ const Entity MAX_ENTITY = 5000;
 using ComponentType = size_t;
 cont ComponentType MAX_COMPONENT=32;
 using Signature = std::bitset <MAX_COMPONENT>;
-
+//--------------------------------------------------------------------------------------
 class EntityManager
 {
 public:
