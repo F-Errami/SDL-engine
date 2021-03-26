@@ -1,6 +1,7 @@
 #pragma once
 #ifndef SDL_ENGINE_COMPONENT_HPP
 #define SDL_ENGINE_COMPONENT_HPP
+
 #include "Entity.hpp"
 #include <unordered_map>
 #include <typeinfo>
