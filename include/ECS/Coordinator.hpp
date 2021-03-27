@@ -1,10 +1,10 @@
 #pragma once
 #ifndef SDL_ENGINE_COORDINATOR_HPP
 #define SDL_ENGINE_COORDINATOR_HPP
+
 #include "Entity.hpp"
 #include"Component.hpp"
 #include "System.hpp"
-
 
 class Coordinator
         {
