@@ -5,6 +5,7 @@
 #include"Component.hpp"
 #include "System.hpp"
 
+
 class Coordinator
         {
                 public:
