@@ -5,6 +5,7 @@
 
 #include "Entity.hpp"
 #include "Component.hpp"
+#include <typeinfo>
 #include <set>
 
 class System
@@ -27,7 +28,7 @@ public:
 
         // Create a pointer to the system and return it so it can be used externally
         auto system = std::make_shared<T>();
-        mSystems.insert({typeName, system});
+        mSystems.insert(make_pair(typeName,system));
         return system;
     }
 
@@ -39,7 +40,7 @@ public:
         assert(mSystems.find(typeName) != mSystems.end() && "System used before registered.");
 
         // Set the signature for this system
-        mSignatures.insert({typeName, signature});
+        mSignatures.insert(std::make_pair(typeName,signature));
     }
 
     void EntityDestroyed(Entity entity)
@@ -50,7 +51,7 @@ public:
         {
             auto const& system = pair.second;
 
-            system->mEntities.erase(entity);
+            system->Entities.erase(entity);
         }
     }
 
@@ -66,21 +67,21 @@ public:
             // Entity signature matches system signature - insert into set
             if ((entitySignature & systemSignature) == systemSignature)
             {
-                system->mEntities.insert(entity);
+                system->Entities.insert(entity);
             }
                 // Entity signature does not match system signature - erase from set
             else
             {
-                system->mEntities.erase(entity);
+                system->Entities.erase(entity);
             }
         }
     }
 
 private:
     // Map from system type string pointer to a signature
-    std::unordered_map<const char*, Signature> mSignatures{};
+    std::unordered_map<const char*, Signature> mSignatures;
 
     // Map from system type string pointer to a system pointer
-    std::unordered_map<const char*, std::shared_ptr<System>> mSystems{};
+    std::unordered_map<const char*, std::shared_ptr<System> > mSystems;
 };
 #endif //SDL_ENGINE_SYSTEM_HPP

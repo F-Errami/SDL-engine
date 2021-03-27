@@ -11,7 +11,9 @@
 class IComponentArray
 {
     ~IComponentArray();
-    virtual void EntityDestroyed(Entity entity)
+
+public:
+    virtual void EntityDestroyed(Entity entity);
 };
 
 //--------------------------------------------------------------------------------------
@@ -21,18 +23,18 @@ class ComponentArray :public IComponentArray
 public:
 void InsertData(Entity entity,T component)
 {
-    assert(mEntityToIndexMap.find(entity) == mEntityToIndexMap.end() && "Component added to same entity more than once.");
+    assert(EntityToIndexMap.find(entity) == EntityToIndexMap.end() && "Component added to same entity more than once.");
     //we insert the component at the last of the array
     size_t newIndex = size;
     EntityToIndexMap[entity] = newIndex;
-    IndexToEntity[newIndex] = entity;
+    IndexToEntityMap[newIndex] = entity;
     componentArray[newIndex] = component;
     ++size;
 }
 
-void removeData(Entity entity)
+void RemoveData(Entity entity)
 {
-    assert(mEntityToIndexMap.find(entity) != mEntityToIndexMap.end() && "Removing non-existent component.");
+    assert(EntityToIndexMap.find(entity) != EntityToIndexMap.end() && "Removing non-existent component.");
 
     //we put the component of the entity at the last of the array
     size_t indexOfRemovedEntity = EntityToIndexMap[entity];
@@ -52,7 +54,7 @@ void removeData(Entity entity)
 
 }
 
-T& getData(Entity entity)
+T& GetData(Entity entity)
 {
     assert(EntityToIndexMap.find(entity) != EntityToIndexMap.end() && "Retrieving non-existent component.");
 
@@ -76,7 +78,7 @@ private:
 
 //it allows us to know the index of an entity in the componentArray
 //so that we can know the data of an entity by just knowing her id
-    std::unordere_map<Entity,size_t> EntityToIndexMap;
+    std::unordered_map<Entity,size_t> EntityToIndexMap;
 
 //it allows us to know the Entity of a component in the componentArray
 //so that we can know an entity  by just knowing the index of her component
@@ -92,16 +94,17 @@ private:
 class ComponentManager
 {
 public:
+    template<typename T>
 void RegisterComponent()
 {
     const char* typeName = typeid(T).name();
     assert(componentTypes.find(typeName) == componentTypes.end() && "Registering component type more than once.");
 
     // Add this component type to the component type map
-    componentTypes.insert({typeName, NextComponentType});
+    componentTypes.insert(std::make_pair(typeName, NextComponentType));
 
     // Create a ComponentArray pointer and add it to the component arrays map
-    componentArrays.insert({typeName, std::make_shared<ComponentArray<T>>()});
+    componentArrays.insert(std::make_pair(typeName, std::make_shared<ComponentArray<T> >()));
 
     // Increment the value so that the next component registered will be different
     ++NextComponentType;
@@ -113,7 +116,7 @@ void RegisterComponent()
     {
         const char* typeName = typeid(T).name();
 
-        assert(mComponentTypes.find(typeName) != mComponentTypes.end() && "Component not registered before use.");
+        assert(componentTypes.find(typeName) != componentTypes.end() && "Component not registered before use.");
 
         // Return this component's type - used for creating signatures
         return componentTypes[typeName];

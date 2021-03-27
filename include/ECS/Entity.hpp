@@ -10,7 +10,7 @@
 using Entity = uint32_t;
 const Entity MAX_ENTITY = 5000;
 using ComponentType = size_t;
-cont ComponentType MAX_COMPONENT=32;
+const ComponentType MAX_COMPONENT=32;
 using Signature = std::bitset <MAX_COMPONENT>;
 //--------------------------------------------------------------------------------------
 
@@ -19,16 +19,17 @@ class EntityManager
 public:
     EntityManager()
     {
-        for (Entity entity = 0; entity < MAX_ENTITY; ++i)
+        for (Entity entity = 0; entity < MAX_ENTITY; ++entity)
         {
             availableEntities.push(entity);
         }
-        livingEntity = 0;
+         nbLivingEntity = 0;
     }
 
-    Entity createEntity()
-    {  assert(nbLivingEntity < MAX_ENTITIES && "Too many entities in existence.");
-        id = availableEntities.front();
+    Entity CreateEntity()
+    {
+        assert(nbLivingEntity < MAX_ENTITY && "Too many entities in existence.");
+       Entity  id = availableEntities.front();
         availableEntities.pop();
         ++nbLivingEntity;
 
@@ -37,21 +38,21 @@ public:
 
     void DestroyEntity(Entity entity)
     {
-        assert(entity < MAX_ENTITIES && "Entity out of range.");
+        assert(entity < MAX_ENTITY && "Entity out of range.");
         availableEntities.push(entity);
-        signatures[entity].resest();
+        signatures[entity].reset();
         --nbLivingEntity;
     }
 
-    void setSignatures( Entity entity, Signature signature)
+    void SetSignature( Entity entity, Signature signature)
     {
-        assert(entity < MAX_ENTITIES && "Entity out of range.");
+        assert(entity < MAX_ENTITY && "Entity out of range.");
         signatures[entity] = signature;
     }
 
-   Signature getSigmature(Entity entity)
+   Signature GetSignature(Entity entity)
     {
-        assert(entity < MAX_ENTITIES && "Entity out of range.");
+        assert(entity < MAX_ENTITY && "Entity out of range.");
         return signatures[entity];
     }
 
