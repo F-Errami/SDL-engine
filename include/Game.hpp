@@ -8,6 +8,7 @@
 #include "Map.hpp"
 #include "ECS/Coordinator.hpp"
 #include "ECS/PositionComponent.hpp"
+#include "ECS/SpriteComponent.hpp"
 
 
 

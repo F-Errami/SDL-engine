@@ -1,7 +1,8 @@
 #include "../include/Game.hpp"
 #include "../include/TextureManager.hpp"
 
-GameObject *player;
+
+
 GameObject *enemy;
 
 Map *map;
@@ -10,9 +11,9 @@ SDL_Renderer *Game::renderer= nullptr;
 
 
 Coordinator gCoordinator;
+SpriteComponent spriteComponent;
 
-
-Entity newPlayer ;
+Entity player ;
 
 //constructor
 Game::Game()
@@ -47,9 +48,15 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
    SDL_SetRenderDrawColor(renderer,255,255,255,255);
     isRunning=true;
 
+    gCoordinator.Init();
+    player = gCoordinator.CreateEntity();
+    gCoordinator.RegisterComponent<SpriteComponent>();
+    gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/luffyInspired2.png"));
+    gCoordinator.GetComponent<SpriteComponent>(player).init(player);
 
 
-    player= new GameObject("images/player.png",0,0);
+
+
     enemy= new GameObject("images/enemy.png",50,50);
     map= new Map();
 
@@ -79,9 +86,9 @@ void Game::handleEvent()
 void Game::update()
 {
  ++cnt;
- player->update();
- enemy->update();
 
+ enemy->update();
+ gCoordinator.GetComponent<SpriteComponent>(player).update();
 
 }
 
@@ -91,7 +98,7 @@ void Game::render()
     SDL_RenderClear(renderer);
     //this is where we would add stuff to render
     map->drawMap();
-     player->render();
+    gCoordinator.GetComponent<SpriteComponent>(player).draw();
      enemy->render();
 
     SDL_RenderPresent(renderer);

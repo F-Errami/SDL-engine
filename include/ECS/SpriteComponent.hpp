@@ -13,7 +13,7 @@ class SpriteComponent
 {
 private:
 
-    PositionComponent *position;
+    PositionComponent *position ;
     SDL_Texture *texture;
     SDL_Rect srcRect,destRect;
 

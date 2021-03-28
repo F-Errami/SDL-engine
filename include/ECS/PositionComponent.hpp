@@ -12,7 +12,10 @@ private:
     int xpos;
     int ypos;
 public:
-
+    PositionComponent()
+    {
+        
+    }
     int x(){return xpos;}
     int y(){return ypos;}
 
