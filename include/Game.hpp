@@ -33,7 +33,7 @@ public:
     static SDL_Renderer* renderer;
 
 private:
-    int cnt=0;
+    int cnt;
     bool isRunning;
     SDL_Window* window;
 

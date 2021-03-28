@@ -1,7 +1,6 @@
 #pragma once
 
-#ifndef SDL_GAME_TEXTUREMANAGER_HPP
-#define SDL_GAME_TEXTUREMANAGER_HPP
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Game.hpp"
@@ -12,5 +11,3 @@ public:
     static SDL_Texture* LoadTexture(const char* filename);
     static void draw(SDL_Texture *tex,SDL_Rect src,SDL_Rect dest );
 };
-
-#endif //SDL_GAME_TEXTUREMANAGER_HPP

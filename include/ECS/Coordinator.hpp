@@ -51,7 +51,7 @@ class Coordinator
                 {
                     mComponentManager->AddComponent<T>(entity, component);
 
-                    auto signature = mEntityManager->GetSignature(entity);
+                    Signature signature = mEntityManager->GetSignature(entity);
                     signature.set(mComponentManager->GetComponentType<T>(), true);
                     mEntityManager->SetSignature(entity, signature);
 
@@ -63,7 +63,7 @@ class Coordinator
                 {
                     mComponentManager->RemoveComponent<T>(entity);
 
-                    auto signature = mEntityManager->GetSignature(entity);
+                    Signature signature = mEntityManager->GetSignature(entity);
                     signature.set(mComponentManager->GetComponentType<T>(), false);
                     mEntityManager->SetSignature(entity, signature);
 

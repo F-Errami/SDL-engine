@@ -1,14 +1,11 @@
 
 #pragma once
 
-#include "Components.hpp"
+
 #include "../Game.hpp"
-#include"../TextureManager.hpp"
+#include "../TextureManager.hpp"
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include "PositionComponent.hpp"
-
-
 
 extern Coordinator gCoordinator;
 
@@ -19,6 +16,7 @@ private:
     PositionComponent *position ;
     SDL_Texture *texture;
     SDL_Rect srcRect,destRect;
+
 
 
 public:
@@ -32,9 +30,7 @@ public:
 
     void init(Entity entity)
     {
-     position = &gCoordinator.GetComponent<PositionComponent> (entity);
-
-     position =
+     position = &gCoordinator.GetComponent<PositionComponent>(entity);
      srcRect.x=srcRect.y=0;
      srcRect.w=srcRect.h=32;
      destRect.w=destRect.h=64;
@@ -49,7 +45,7 @@ public:
 
     void draw()
     {
-        TextureManager::draw( texture,srcRect,destRect);
+        TextureManager::draw(texture,srcRect,destRect);
     }
 
 };

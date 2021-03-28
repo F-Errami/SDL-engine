@@ -10,7 +10,7 @@
 
 class IComponentArray
 {
-  // ~IComponentArray() = default;
+   ~IComponentArray() = default;
 
 public:
     virtual void EntityDestroyed(Entity entity) = 0;
@@ -149,7 +149,7 @@ void RegisterComponent()
         // If it has a component for that entity, it will remove it
         for (auto const& pair : componentArrays)
         {
-            auto const& component = pair.second;
+            std::shared_ptr<IComponentArray> const& component = pair.second;
 
             component->EntityDestroyed(entity);
         }

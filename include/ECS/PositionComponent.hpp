@@ -1,7 +1,5 @@
 #pragma once
 
-#ifndef SDL_ENGINE_COMPONENTS_H
-#define SDL_ENGINE_COMPONENTS_H
 
 #include "Coordinator.hpp"
 #include "Components.hpp"
@@ -36,4 +34,3 @@ public:
     }
 };
 
-#endif //SDL_ENGINE_COMPONENTS_H

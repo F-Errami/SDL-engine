@@ -27,7 +27,7 @@ public:
         assert(mSystems.find(typeName) == mSystems.end() && "Registering system more than once.");
 
         // Create a pointer to the system and return it so it can be used externally
-        auto system = std::make_shared<T>();
+        std::shared_ptr<System> system = std::make_shared<T>();
         mSystems.insert(make_pair(typeName,system));
         return system;
     }
@@ -49,7 +49,7 @@ public:
         // mEntities is a set so no check needed
         for (auto const& pair : mSystems)
         {
-            auto const& system = pair.second;
+            std::shared_ptr<System> const& system = pair.second;
 
             system->Entities.erase(entity);
         }
@@ -60,9 +60,9 @@ public:
         // Notify each system that an entity's signature changed
         for (auto const& pair : mSystems)
         {
-            auto const& type = pair.first;
-            auto const& system = pair.second;
-            auto const& systemSignature = mSignatures[type];
+            const char* const& type = pair.first;
+            std::shared_ptr<System> const& system = pair.second;
+            Signature const& systemSignature = mSignatures[type];
 
             // Entity signature matches system signature - insert into set
             if ((entitySignature & systemSignature) == systemSignature)
