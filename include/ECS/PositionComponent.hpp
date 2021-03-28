@@ -4,6 +4,7 @@
 #define SDL_ENGINE_COMPONENTS_H
 
 #include "Coordinator.hpp"
+#include "Components.hpp"
 
 class PositionComponent
 {

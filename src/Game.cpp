@@ -10,7 +10,7 @@ SDL_Renderer *Game::renderer= nullptr;
 
 
 Coordinator gCoordinator;
-PositionComponent position;
+
 
 Entity newPlayer ;
 
@@ -47,19 +47,13 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
    SDL_SetRenderDrawColor(renderer,255,255,255,255);
     isRunning=true;
 
-    //initializing the coordinator
-    gCoordinator.Init();
-
-    newPlayer = gCoordinator.CreateEntity();
 
 
     player= new GameObject("images/player.png",0,0);
     enemy= new GameObject("images/enemy.png",50,50);
     map= new Map();
 
-    position.init();
-    gCoordinator.RegisterComponent<PositionComponent>();
-    gCoordinator.AddComponent<PositionComponent>(newPlayer,position);
+
 
 
 
@@ -87,9 +81,7 @@ void Game::update()
  ++cnt;
  player->update();
  enemy->update();
- gCoordinator.GetComponent<PositionComponent>(newPlayer).update();
- std::cout <<gCoordinator.GetComponent<PositionComponent>(newPlayer).x()<<";"<<
-gCoordinator.GetComponent<PositionComponent>(newPlayer).y()<<std::endl;
+
 
 }
 
