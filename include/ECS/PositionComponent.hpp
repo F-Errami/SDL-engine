@@ -14,7 +14,7 @@ private:
 public:
     PositionComponent()
     {
-        
+
     }
     int x(){return xpos;}
     int y(){return ypos;}

@@ -5,4 +5,7 @@
 #include "PositionComponent.hpp"
 #include "SpriteComponent.hpp"
 #include "Coordinator.hpp"
+
+
+
 #endif //SDL_ENGINE_COMPONENTS_HPP
