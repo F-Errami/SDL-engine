@@ -3,13 +3,13 @@
 #ifndef SDL_ENGINE_COMPONENTS_H
 #define SDL_ENGINE_COMPONENTS_H
 
-#include "ECS/Coordinator"
+#include "ECS/Coordinator.hpp"
 
 class PositionComponent
 {
 private:
-    int xpos=0;
-    int ypos=0;
+    int xpos;
+    int ypos;
 
 public:
     int x(){return xpos;}

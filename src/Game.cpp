@@ -13,8 +13,9 @@ auto& newPlayer(manager.addEntity());
 
 */
 
+Coordinator gCoordinator;
 
-
+Entity newPlayer ;
 
 //constructor
 Game::Game()
@@ -49,11 +50,18 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
    SDL_SetRenderDrawColor(renderer,255,255,255,255);
     isRunning=true;
 
+    //initializing the coordinator
+    gCoordinator.Init();
+
+    newPlayer = gCoordinator.CreateEntity();
+
+
     player= new GameObject("images/player.png",0,0);
     enemy= new GameObject("images/enemy.png",50,50);
     map= new Map();
 
-   // newPlayer.addComponent<PositionComponent>();
+    gCoordinator.AddComponent<PositionComponent>(newPlayer,)
+
 
 
 }
