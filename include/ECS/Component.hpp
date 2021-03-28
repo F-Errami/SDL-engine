@@ -10,7 +10,7 @@
 
 class IComponentArray
 {
-   //~IComponentArray() = default;
+  // ~IComponentArray() = default;
 
 public:
     virtual void EntityDestroyed(Entity entity) = 0;

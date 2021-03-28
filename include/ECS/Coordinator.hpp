@@ -9,6 +9,11 @@
 class Coordinator
         {
                 public:
+
+               Coordinator()
+               {
+
+               }
                 void Init()
                 {
                     // Create pointers to each manager

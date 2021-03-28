@@ -58,8 +58,9 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     map= new Map();
 
     position.init();
-   // gCoordinator.AddComponent<PositionComponent>(newPlayer,position);
-   // gCoordinator.RegisterComponent<PositionComponent>();
+    gCoordinator.RegisterComponent<PositionComponent>();
+    gCoordinator.AddComponent<PositionComponent>(newPlayer,position);
+
 
 
 
@@ -86,9 +87,9 @@ void Game::update()
  ++cnt;
  player->update();
  enemy->update();
-// gCoordinator.GetComponent<PositionComponent>(newPlayer).update();
-// std::cout <<gCoordinator.GetComponent<PositionComponent>(newPlayer).x()<<";"<<
-// gCoordinator.GetComponent<PositionComponent>(newPlayer).y()<<std::endl;
+ gCoordinator.GetComponent<PositionComponent>(newPlayer).update();
+ std::cout <<gCoordinator.GetComponent<PositionComponent>(newPlayer).x()<<";"<<
+gCoordinator.GetComponent<PositionComponent>(newPlayer).y()<<std::endl;
 
 }
 
