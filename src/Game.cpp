@@ -51,7 +51,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     gCoordinator.Init();
     player = gCoordinator.CreateEntity();
     gCoordinator.RegisterComponent<SpriteComponent>();
-    gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/luffyInspired2.png"));
+    gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
     gCoordinator.GetComponent<SpriteComponent>(player).init(player);
 
 

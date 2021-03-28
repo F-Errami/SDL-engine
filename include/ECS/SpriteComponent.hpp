@@ -1,10 +1,13 @@
 
 #pragma once
-#include "PositionComponent.hpp"
+
 #include "Components.hpp"
-#include <SDL2/SDL.h>
 #include "../Game.hpp"
 #include"../TextureManager.hpp"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include "PositionComponent.hpp"
+
 
 
 extern Coordinator gCoordinator;
@@ -29,7 +32,7 @@ public:
 
     void init(Entity entity)
     {
-     position = &gCoordinator.GetComponent<PositionComponent>(entity);
+     position = &gCoordinator.GetComponent<PositionComponent> (entity);
 
      position =
      srcRect.x=srcRect.y=0;
