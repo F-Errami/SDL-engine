@@ -3,7 +3,7 @@
 #ifndef SDL_ENGINE_COMPONENTS_H
 #define SDL_ENGINE_COMPONENTS_H
 
-#include "ECS/Coordinator.hpp"
+#include "Coordinator.hpp"
 
 class PositionComponent
 {
