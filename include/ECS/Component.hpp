@@ -10,10 +10,10 @@
 
 class IComponentArray
 {
-    ~IComponentArray();
+   //~IComponentArray() = default;
 
 public:
-    virtual void EntityDestroyed(Entity entity);
+    virtual void EntityDestroyed(Entity entity) = 0;
 };
 
 //--------------------------------------------------------------------------------------
@@ -165,14 +165,14 @@ private:
 
 
     template<typename T>
-    std::shared_ptr<ComponentArray<T> > GetComponentArray()
-    {
+   std::shared_ptr<ComponentArray<T> > GetComponentArray()
+   {
         const char* typeName = typeid(T).name();
 
-        assert(componentTypes.find(typeName) != componentTypes.end() && "Component not registered before use.");
+      assert(componentTypes.find(typeName) != componentTypes.end() && "Component not registered before use.");
 
         return std::static_pointer_cast<ComponentArray<T> >(componentArrays[typeName]);
-    }
+   }
 };
 
 
