@@ -16,5 +16,7 @@ public:
         xpos=x;
         ypos=y;
     }
+    int x(){return xpos;}
+    int y(){return ypos;}
 };
 

@@ -49,7 +49,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     isRunning=true;
 
     gCoordinator.Init();
-   player = gCoordinator.CreateEntity();
+    player = gCoordinator.CreateEntity();
     gCoordinator.RegisterComponent<SpriteComponent>();
     gCoordinator.AddComponent<SpriteComponent>(player, SpriteComponent("images/player.png", NULL));
     gCoordinator.AddComponent<PositionComponent>(player,PositionComponent());
