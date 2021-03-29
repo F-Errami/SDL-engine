@@ -11,23 +11,10 @@ private:
     int xpos;
     int ypos;
 public:
-    PositionComponent()
+    PositionComponent(int x,int y)
     {
-        xpos=0;
-        ypos=0;
-    }
-    int x(){return xpos;}
-    int y(){return ypos;}
-
-    void update()
-    {
-        xpos++;
-        ypos++;
-    }
-    void setPos(int x,int y)
-    {
-     xpos = x;
-     ypos =y;
+        xpos=x;
+        ypos=y;
     }
 };
 

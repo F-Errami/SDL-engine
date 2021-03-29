@@ -12,41 +12,9 @@ extern Coordinator gCoordinator;
 
 class SpriteComponent
 {
-private:
-
-    PositionComponent *position;
+public:
     SDL_Texture *texture;
     SDL_Rect srcRect,destRect;
-
-
-
-public:
-    SpriteComponent() = default;
-
-    SpriteComponent(const char *path)  {
-        texture = TextureManager::LoadTexture(path);
-    }
-
-
-    void init(Entity entity)
-    {
-     position = &gCoordinator.GetComponent<PositionComponent>(entity);
-     srcRect.x=srcRect.y=0;
-     srcRect.w=srcRect.h=32;
-     destRect.w=destRect.h=64;
-    }
-
-
-    void update()
-    {
-     destRect.x = position->x;
-     destRect.y = position->y;
-    }
-
-    void draw()
-    {
-        TextureManager::draw(texture,srcRect,destRect);
-    }
 
 };
 
