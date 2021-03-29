@@ -4,7 +4,8 @@
 #include "Coordinator.hpp"
 #include "Components.hpp"
 
-class PositionComponent
+
+ class PositionComponent
 {
 private:
     int xpos;
@@ -12,16 +13,12 @@ private:
 public:
     PositionComponent()
     {
-
+        xpos=0;
+        ypos=0;
     }
     int x(){return xpos;}
     int y(){return ypos;}
 
-    void init()
-    {
-        xpos=0;
-        ypos=0;
-    }
     void update()
     {
         xpos++;

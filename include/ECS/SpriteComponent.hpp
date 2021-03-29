@@ -6,6 +6,7 @@
 #include "../TextureManager.hpp"
 #include <SDL2/SDL.h>
 #include "PositionComponent.hpp"
+#include "PositionComponent.hpp"
 
 extern Coordinator gCoordinator;
 
@@ -13,7 +14,7 @@ class SpriteComponent
 {
 private:
 
-    PositionComponent *position ;
+    PositionComponent *position;
     SDL_Texture *texture;
     SDL_Rect srcRect,destRect;
 
@@ -22,8 +23,7 @@ private:
 public:
     SpriteComponent() = default;
 
-    SpriteComponent(const char* path)
-    {
+    SpriteComponent(const char *path)  {
         texture = TextureManager::LoadTexture(path);
     }
 
