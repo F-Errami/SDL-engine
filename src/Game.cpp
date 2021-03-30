@@ -3,6 +3,7 @@
 
 
 
+
 GameObject *enemy;
 
 Map *map;
@@ -10,8 +11,13 @@ Map *map;
 SDL_Renderer *Game::renderer= nullptr;
 
 
+///////systems//////////////////////////////
+std::shared_ptr<SpriteSystem> spriteSystem;
+////////////////////////////////////////////
+
+
 Coordinator gCoordinator;
-SpriteComponent spriteComponent;
+
 
 Entity player ;
 
@@ -48,12 +54,21 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
    SDL_SetRenderDrawColor(renderer,255,255,255,255);
     isRunning=true;
 
-    gCoordinator.Init();
-    player = gCoordinator.CreateEntity();
-    gCoordinator.RegisterComponent<SpriteComponent>();
-    gCoordinator.AddComponent<SpriteComponent>(player, SpriteComponent("images/player.png", NULL));
-    gCoordinator.AddComponent<PositionComponent>(player,PositionComponent());
-    gCoordinator.GetComponent<SpriteComponent>(player).init(player);
+    spriteSystem = gCoordinator.RegisterSystem<SpriteSystem>();
+    {
+        Signature signature;
+        signature.set(gCoordinator.GetComponentType<PositionComponent>());
+        signature.set(gCoordinator.GetComponentType<SpriteComponent>());
+        gCoordinator.SetSystemSignature<SpriteSystem>(signature);
+    }
+
+    spriteSystem->init();
+
+    Entity player= gCoordinator.CreateEntity();
+    gCoordinator.AddComponent<PositionComponent>(player,PositionComponent(0,0));
+    gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
+
+
 
 
 
@@ -61,6 +76,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
 
     enemy= new GameObject("images/enemy.png",50,50);
     map= new Map();
+
 
 
 
@@ -90,8 +106,7 @@ void Game::update()
  ++cnt;
 
  enemy->update();
-// gCoordinator.GetComponent<PositionComponent>(player).update();
-// gCoordinator.GetComponent<SpriteComponent>(player).update();
+ spriteSystem->update();
 
 }
 
@@ -101,7 +116,7 @@ void Game::render()
     SDL_RenderClear(renderer);
     //this is where we would add stuff to render
     map->drawMap();
-    gCoordinator.GetComponent<SpriteComponent>(player).draw();
+    spriteSystem->draw();
      enemy->render();
 
     SDL_RenderPresent(renderer);

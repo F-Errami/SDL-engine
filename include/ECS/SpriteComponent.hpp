@@ -16,7 +16,10 @@ public:
     SDL_Texture *texture;
     SDL_Rect srcRect,destRect;
 
-
+    SpriteComponent(const char* fileName)
+    {
+        texture = TextureManager::LoadTexture(fileName)
+    }
 
 };
 

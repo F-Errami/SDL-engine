@@ -9,6 +9,7 @@
 #include "ECS/Coordinator.hpp"
 #include "ECS/PositionComponent.hpp"
 #include "ECS/SpriteComponent.hpp"
+#include "ECS/SpriteSystem.hpp"
 
 
 
