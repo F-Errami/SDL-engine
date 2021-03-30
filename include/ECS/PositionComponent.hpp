@@ -18,5 +18,14 @@ public:
     }
     int x(){return xpos;}
     int y(){return ypos;}
+
+    void setX(int p_x)
+    {
+        xpos=p_x;
+    }
+    void setY(int p_y)
+    {
+        ypos=p_y;
+    }
 };
 

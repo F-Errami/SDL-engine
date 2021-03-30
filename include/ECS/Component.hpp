@@ -6,6 +6,8 @@
 #include <unordered_map>
 #include <typeinfo>
 #include <memory>
+#include <SDL2/SDL.h>
+#include "../TextureManager.hpp"
 
 
 class IComponentArray
@@ -108,6 +110,7 @@ void RegisterComponent()
 
     // Increment the value so that the next component registered will be different
     ++NextComponentType;
+
 
 }
 

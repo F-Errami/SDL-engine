@@ -7,13 +7,14 @@
 #include "Coordinator.hpp"
 #include <SDL2/SDL.h>
 
+
 class SpriteSystem:public System
 {
 public:
  void init();
  void update();
  void draw();
-}
+};
 
 
 #endif //SDL_ENGINE_SPRITESYSTEM_H

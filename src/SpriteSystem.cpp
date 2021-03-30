@@ -14,11 +14,13 @@ void SpriteSystem::update()
         PositionComponent& position = gCoordinator.GetComponent<PositionComponent>(entity);
         SpriteComponent& sprite = gCoordinator.GetComponent<SpriteComponent>(entity);
 
-        SDL_Rect srcRec,destRect;
+        SDL_Rect srcRect,destRect;
         srcRect.x= srcRect.y==0;
 
-        position.x++;
-        position.y++;
+        position.setX(position.x()+1);
+        position.setY(position.y()+1);
+
+
 
 
 
@@ -33,13 +35,13 @@ void SpriteSystem::update()
 }
 
 
-void SpriteSystemDraw::draw()
+void SpriteSystem::draw()
 {
     for (Entity const& entity : Entities)
     {
         PositionComponent& position = gCoordinator.GetComponent<PositionComponent>(entity);
         SpriteComponent& sprite = gCoordinator.GetComponent<SpriteComponent>(entity);
-        TextureManager::draw(sprite.texture,&sprite.srcRect,sprite.destRect);
+        TextureManager::draw(sprite.texture,sprite.srcRect,sprite.destRect);
     }
 
 }

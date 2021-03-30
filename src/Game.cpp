@@ -4,6 +4,7 @@
 
 
 
+
 GameObject *enemy;
 
 Map *map;
@@ -106,7 +107,7 @@ void Game::update()
  ++cnt;
 
  enemy->update();
- spriteSystem->update();
+   spriteSystem->update();
 
 }
 

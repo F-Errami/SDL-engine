@@ -2,7 +2,7 @@
 CC = g++
 
 #variables
-SRC = src/main.cpp src/Game.cpp src/TextureManager.cpp src/GameObject.cpp src/Map.cpp src/SpriteSystem.cpp
+SRC = src/main.cpp src/Game.cpp src/TextureManager.cpp src/GameObject.cpp src/Map.cpp src/SpriteSystem.cpp src/SpriteComponent.cpp
 Obj = main.o
 
 
@@ -13,7 +13,7 @@ all: main
 main: main.o
 	 $(CC)  -o demo $(SRC)  -lSDL2 -lSDL2_image
 
-main.o: src/main.cpp src/Game.cpp src/TextureManager.cpp src/GameObject.cpp src/Map.cpp src/SpriteSystem.cpp
+main.o: src/main.cpp src/Game.cpp src/TextureManager.cpp src/GameObject.cpp src/Map.cpp src/SpriteSystem.cpp src/SpriteComponent.cpp
 	  $(CC) -c  $(SRC)   $(pkg-config --cflags --libs sdl2)
 
 
