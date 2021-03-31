@@ -66,6 +66,8 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     spriteSystem->init();
 
     Entity player= gCoordinator.CreateEntity();
+    gCoordinator.RegisterComponent<PositionComponent>();
+    gCoordinator.RegisterComponent<SpriteComponent>();
     gCoordinator.AddComponent<PositionComponent>(player,PositionComponent(0,0));
     gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
 
