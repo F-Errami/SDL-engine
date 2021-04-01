@@ -12,9 +12,9 @@
 
 class IComponentArray
 {
-   ~IComponentArray() = default;
 
 public:
+    ~IComponentArray() = default;
     virtual void EntityDestroyed(Entity entity) = 0;
 };
 
@@ -103,11 +103,9 @@ void RegisterComponent()
     assert(componentTypes.find(typeName) == componentTypes.end() && "Registering component type more than once.");
 
     // Add this component type to the component type map
-    componentTypes.insert(std::make_pair(typeName, NextComponentType));
-
+    componentTypes.insert(std::make_pair<const char*,ComponentType>(typeName, NextComponentType));
     // Create a ComponentArray pointer and add it to the component arrays map
-    componentArrays.insert(std::make_pair(typeName, std::make_shared<ComponentArray<T> >()));
-
+    componentArrays.insert(std::make_pair<const char*,std::shared_ptr<IComponentArray> >(typeName, std::make_shared<ComponentArray<T> >()));
     // Increment the value so that the next component registered will be different
     ++NextComponentType;
 

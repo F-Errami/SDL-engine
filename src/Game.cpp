@@ -55,6 +55,10 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
    SDL_SetRenderDrawColor(renderer,255,255,255,255);
     isRunning=true;
 
+    gCoordinator.Init();
+    gCoordinator.RegisterComponent<PositionComponent>();
+    gCoordinator.RegisterComponent<SpriteComponent>();
+
     spriteSystem = gCoordinator.RegisterSystem<SpriteSystem>();
     {
         Signature signature;
@@ -63,15 +67,16 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
         gCoordinator.SetSystemSignature<SpriteSystem>(signature);
     }
 
-    spriteSystem->init();
 
-    Entity player= gCoordinator.CreateEntity();
-    gCoordinator.RegisterComponent<PositionComponent>();
-    gCoordinator.RegisterComponent<SpriteComponent>();
+
+    Entity const& player= gCoordinator.CreateEntity();
+
+
     gCoordinator.AddComponent<PositionComponent>(player,PositionComponent(0,0));
+
     gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
 
-
+    spriteSystem->init();
 
 
 
@@ -109,7 +114,7 @@ void Game::update()
  ++cnt;
 
  enemy->update();
-   spriteSystem->update();
+ spriteSystem->update();
 
 }
 

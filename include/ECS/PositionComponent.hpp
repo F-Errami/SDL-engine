@@ -11,6 +11,10 @@ private:
     int xpos;
     int ypos;
 public:
+    PositionComponent()
+    {
+        xpos = ypos = 0;
+    }
     PositionComponent(int x,int y)
     {
         xpos=x;

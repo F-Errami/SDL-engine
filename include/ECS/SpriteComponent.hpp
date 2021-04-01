@@ -16,6 +16,7 @@ public:
     SDL_Rect srcRect,destRect;
 
     SpriteComponent(const char* fileName);
+    SpriteComponent();
 
 
 };
