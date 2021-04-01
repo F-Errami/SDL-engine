@@ -5,12 +5,12 @@
 #include "Components.hpp"
 
 
- class PositionComponent
+class PositionComponent
 {
-private:
+public:
+
     int xpos;
     int ypos;
-public:
     PositionComponent()
     {
         xpos = ypos = 0;
@@ -20,8 +20,6 @@ public:
         xpos=x;
         ypos=y;
     }
-    int x(){return xpos;}
-    int y(){return ypos;}
 
     void setX(int p_x)
     {
