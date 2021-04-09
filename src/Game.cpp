@@ -56,13 +56,13 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     isRunning=true;
 
     gCoordinator.Init();
-    gCoordinator.RegisterComponent<PositionComponent>();
+    gCoordinator.RegisterComponent<TransformComponent>();
     gCoordinator.RegisterComponent<SpriteComponent>();
 
     spriteSystem = gCoordinator.RegisterSystem<SpriteSystem>();
     {
         Signature signature;
-        signature.set(gCoordinator.GetComponentType<PositionComponent>());
+        signature.set(gCoordinator.GetComponentType<TransformComponent>());
         signature.set(gCoordinator.GetComponentType<SpriteComponent>());
         gCoordinator.SetSystemSignature<SpriteSystem>(signature);
     }
@@ -72,7 +72,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     Entity const& player= gCoordinator.CreateEntity();
 
 
-    gCoordinator.AddComponent<PositionComponent>(player,PositionComponent(0,0));
+    gCoordinator.AddComponent<TransformComponent>(player,TransformComponent(0,0));
 
     gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
 

@@ -11,16 +11,11 @@ void SpriteSystem::update()
 {
     for (Entity const& entity : Entities)
     {
-        TransformComponent& position = gCoordinator.GetComponent<TransformComponent>(entity);
+        TransformComponent& transform = gCoordinator.GetComponent<TransformComponent>(entity);
         SpriteComponent& sprite = gCoordinator.GetComponent<SpriteComponent>(entity);
 
         SDL_Rect srcRect,destRect;
         srcRect.x= srcRect.y==0;
-
-
-    std:: cout<<position.xpos<<" "<<position.ypos<<std::endl;
-        position.ypos ++;
-        position.xpos ++;
 
 
 
@@ -29,8 +24,8 @@ void SpriteSystem::update()
 
         sprite.srcRect.x= sprite.srcRect.y=0;
         sprite.srcRect.w= sprite.srcRect.h=32;
-        sprite.destRect.x=position.xpos;
-        sprite.destRect.y=position.ypos;
+        sprite.destRect.x = (int)transform.position.x;
+        sprite.destRect.y = (int)transform.position.y;
         sprite.destRect.w=64;
         sprite.destRect.h=64;
 

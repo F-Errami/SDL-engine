@@ -3,31 +3,28 @@
 
 #include "Coordinator.hpp"
 #include "Components.hpp"
+#include "../Math.hpp"
 
 
 class TransformComponent
 {
 public:
 
-    float xpos;
-    float ypos;
+    Vector2D position;
     TransformComponent()
     {
-        xpos = ypos = 0;
+        position.x= 0.0f;
+        position.y = 0.0f;
     }
-    TransformComponent(int x,int y)
+    TransformComponent(float x,float y)
     {
-        xpos=x;
-        ypos=y;
+        position.x=x;
+        position.y=y;
     }
 
-    void setX(int p_x)
+    void update()
     {
-        xpos=p_x;
-    }
-    void setY(int p_y)
-    {
-        ypos=p_y;
+
     }
 };
 
