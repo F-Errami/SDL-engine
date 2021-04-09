@@ -5,17 +5,17 @@
 #include "Components.hpp"
 
 
-class PositionComponent
+class TransformComponent
 {
 public:
 
     float xpos;
     float ypos;
-    PositionComponent()
+    TransformComponent()
     {
         xpos = ypos = 0;
     }
-    PositionComponent(int x,int y)
+    TransformComponent(int x,int y)
     {
         xpos=x;
         ypos=y;

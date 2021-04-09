@@ -11,7 +11,7 @@ void SpriteSystem::update()
 {
     for (Entity const& entity : Entities)
     {
-        PositionComponent& position = gCoordinator.GetComponent<PositionComponent>(entity);
+        TransformComponent& position = gCoordinator.GetComponent<TransformComponent>(entity);
         SpriteComponent& sprite = gCoordinator.GetComponent<SpriteComponent>(entity);
 
         SDL_Rect srcRect,destRect;
@@ -42,7 +42,7 @@ void SpriteSystem::draw()
 {
     for (Entity const& entity : Entities)
     {
-        PositionComponent& position = gCoordinator.GetComponent<PositionComponent>(entity);
+        TransformComponent& position = gCoordinator.GetComponent<TransformComponent>(entity);
         SpriteComponent& sprite = gCoordinator.GetComponent<SpriteComponent>(entity);
         TextureManager::draw(sprite.texture,sprite.srcRect,sprite.destRect);
     }

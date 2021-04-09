@@ -5,8 +5,8 @@
 #include "../Game.hpp"
 #include "../TextureManager.hpp"
 #include <SDL2/SDL.h>
-#include "PositionComponent.hpp"
-#include "PositionComponent.hpp"
+#include "TransformComponent.hpp"
+#include "TransformComponent.hpp"
 
 
 class SpriteComponent

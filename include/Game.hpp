@@ -7,7 +7,7 @@
 #include "GameObject.hpp"
 #include "Map.hpp"
 #include "ECS/Coordinator.hpp"
-#include "ECS/PositionComponent.hpp"
+#include "ECS/TransformComponent.hpp"
 #include "ECS/SpriteComponent.hpp"
 #include "ECS/SpriteSystem.hpp"
 

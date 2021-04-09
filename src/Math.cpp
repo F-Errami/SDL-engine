@@ -1,5 +1,7 @@
 #include "../include/Math.hpp"
-
+//========================================================================
+//                           Vector2D
+//========================================================================
 Vector2D::Vector2D()
 {
     x = 0;
@@ -68,6 +70,13 @@ Vector2D & Vector2D::operator*=(const Vector2D &v2)
 Vector2D & Vector2D::operator/=(const Vector2D &v2)
 {
     return thsi->Divide(v2);
+}
+
+
+std::ostream& Vector2D::operator<<(std::ostream,const Vector2D& vec)
+{
+  stream << "(" << vec.x << "," << vec.y <<")";
+  return stream;
 }
 
 
