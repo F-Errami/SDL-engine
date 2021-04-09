@@ -22,9 +22,5 @@ public:
         position.y=y;
     }
 
-    void update()
-    {
-
-    }
 };
 

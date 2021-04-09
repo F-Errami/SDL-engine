@@ -72,7 +72,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     Entity const& player= gCoordinator.CreateEntity();
 
 
-    gCoordinator.AddComponent<TransformComponent>(player,TransformComponent(0,0));
+    gCoordinator.AddComponent<TransformComponent>(player,TransformComponent());
 
     gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
 
@@ -112,6 +112,7 @@ void Game::handleEvent()
 void Game::update()
 {
  ++cnt;
+ gCoordinator.GetComponent<TransformComponent>(player).position.Add(Vector2D(3,0.4));
 
  enemy->update();
  spriteSystem->update();
