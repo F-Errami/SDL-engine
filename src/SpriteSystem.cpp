@@ -19,7 +19,7 @@ void SpriteSystem::update()
 
 
     std:: cout<<position.xpos<<" "<<position.ypos<<std::endl;
-        position.ypos =0.3+position.ypos ;
+        position.ypos =0.0001+position.ypos ;
         position.xpos++;
 
 
