@@ -19,8 +19,9 @@ void SpriteSystem::update()
 
 
     std:: cout<<position.xpos<<" "<<position.ypos<<std::endl;
-        position.ypos =0.0001+position.ypos ;
-        position.xpos++;
+        position.ypos ++;
+        position.xpos ++;
+
 
 
 
@@ -28,8 +29,8 @@ void SpriteSystem::update()
 
         sprite.srcRect.x= sprite.srcRect.y=0;
         sprite.srcRect.w= sprite.srcRect.h=32;
-        sprite.destRect.x=position.xpos*32;
-        sprite.destRect.y=position.ypos*32;
+        sprite.destRect.x=position.xpos;
+        sprite.destRect.y=position.ypos;
         sprite.destRect.w=64;
         sprite.destRect.h=64;
 

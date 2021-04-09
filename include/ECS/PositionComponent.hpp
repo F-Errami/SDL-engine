@@ -9,8 +9,8 @@ class PositionComponent
 {
 public:
 
-    int xpos;
-    int ypos;
+    float xpos;
+    float ypos;
     PositionComponent()
     {
         xpos = ypos = 0;
