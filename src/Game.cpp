@@ -116,7 +116,7 @@ void Game::handleEvent()
 void Game::update()
 {
  ++cnt;
- gCoordinator.GetComponent<TransformComponent>(player).position.Add(Vector2D(0,));
+ gCoordinator.GetComponent<TransformComponent>(player).position.Add(Vector2D());
 
  enemy->update();
  spriteSystem->update();

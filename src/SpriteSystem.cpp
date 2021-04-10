@@ -7,6 +7,13 @@ void SpriteSystem::init()
         TransformComponent &transform = gCoordinator.GetComponent<TransformComponent>(entity);
         SpriteComponent &sprite = gCoordinator.GetComponent<SpriteComponent>(entity);
         transform.init();
+
+        sprite.srcRect.x = sprite.srcRect.y = 0;
+        sprite.srcRect.w = sprite.srcRect.h = 32;
+        sprite.destRect.x = (int) transform.position.x;
+        sprite.destRect.y = (int) transform.position.y;
+        sprite.destRect.w = 64;
+        sprite.destRect.h = 64;
     }
 
     }
