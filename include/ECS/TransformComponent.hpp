@@ -13,7 +13,7 @@ public:
     Vector2D position;
     Vector2D velocity;
 
-    int speed =3;
+    int speed =10;
 
     TransformComponent()
     {

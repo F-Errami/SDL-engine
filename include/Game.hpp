@@ -32,12 +32,13 @@ public:
         return isRunning;
     };
     static SDL_Renderer* renderer;
+    static SDL_Event event;
 
 private:
     int cnt;
     bool isRunning;
     SDL_Window* window;
-    static SDL_Event event;
+
 
 
 
