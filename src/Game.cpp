@@ -15,6 +15,7 @@ SDL_Event Game::event;
 
 ///////systems//////////////////////////////
 std::shared_ptr<SpriteSystem> spriteSystem;
+std::shared_ptr<KeyboardController> keyboardController;
 ////////////////////////////////////////////
 
 
@@ -68,6 +69,13 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
         gCoordinator.SetSystemSignature<SpriteSystem>(signature);
     }
 
+    keyboadController = gCoordinator.RegisterSystem<KeyboardController>();
+    {
+        Signature signature;
+        signature.set(gCoordinator.GetComponentType<TransformComponent>());
+        gCoordinator.SetSystemSignature<KeyboardController>(signature);
+    }
+
 
 
     Entity const& player= gCoordinator.CreateEntity();
@@ -78,6 +86,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
 
     spriteSystem->init();
+
 
 
 
@@ -117,6 +126,7 @@ void Game::update()
 
  enemy->update();
  spriteSystem->update();
+ keyboardController->update();
 
 }
 
