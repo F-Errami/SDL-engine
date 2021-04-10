@@ -10,6 +10,7 @@ GameObject *enemy;
 Map *map;
 
 SDL_Renderer *Game::renderer= nullptr;
+SDL_Event Game::event;
 
 
 ///////systems//////////////////////////////
@@ -95,7 +96,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
 
 void Game::handleEvent()
 {
-    SDL_Event event;
+
     SDL_PollEvent(&event);
     switch (event.type)
     {

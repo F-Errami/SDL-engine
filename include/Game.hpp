@@ -37,6 +37,7 @@ private:
     int cnt;
     bool isRunning;
     SDL_Window* window;
+    static SDL_Event event;
 
 
 
