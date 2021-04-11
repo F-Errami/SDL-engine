@@ -9,11 +9,12 @@ void SpriteSystem::init()
         transform.init();
 
         sprite.srcRect.x = sprite.srcRect.y = 0;
-        sprite.srcRect.w = sprite.srcRect.h = 32;
+        sprite.srcRect.w = transform.width;
+        sprite.srcRect.h = transform.height;
         sprite.destRect.x = (int) transform.position.x;
         sprite.destRect.y = (int) transform.position.y;
-        sprite.destRect.w = 64;
-        sprite.destRect.h = 64;
+        sprite.destRect.w = transform.width * transform.scale;
+        sprite.destRect.h = transform.width * transform.scale;
     }
 
     }
