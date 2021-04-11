@@ -14,7 +14,7 @@ void SpriteSystem::init()
         sprite.destRect.x = (int) transform.position.x;
         sprite.destRect.y = (int) transform.position.y;
         sprite.destRect.w = transform.width * transform.scale;
-        sprite.destRect.h = transform.width * transform.scale;
+        sprite.destRect.h = transform.height * transform.scale;
     }
 
     }
