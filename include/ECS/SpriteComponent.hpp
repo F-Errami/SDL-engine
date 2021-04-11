@@ -17,6 +17,7 @@ public:
 
     SpriteComponent(const char* fileName);
     SpriteComponent();
+    ~SpriteComponent();
 
 
 };

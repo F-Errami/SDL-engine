@@ -14,6 +14,8 @@ public:
     Vector2D velocity;
 
     int height = 30;
+    int width = 32;
+    int scale = 1;
 
     int speed = 10;
 
