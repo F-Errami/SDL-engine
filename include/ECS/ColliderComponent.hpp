@@ -3,24 +3,26 @@
 
 #include "Coordinator.hpp"
 #include <SDL2/SDL.h>
+#include "TransformComponent.hpp"
 
 class ColliderComponent
 {
+public:
     SDL_Rect collider;
     std::string tag;
-    TransformComponent& transform;
+    TransformComponent transform;
 
     ColliderComponent()
     {}
 
-    init(TransformComponent& transform)
+    void init(TransformComponent transform)
     {
-        this->transfor m= transform;
+        this->transform= transform;
     }
 
     void update()
     {
-        colloder.x = transform.position.x;
+        collider.x = transform.position.x;
         collider.y = transform.position.y;
         collider.w = transform.width * transform.scale;
         collider.h = transform.height * transform.scale;

@@ -67,6 +67,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
         Signature signature;
         signature.set(gCoordinator.GetComponentType<TransformComponent>());
         signature.set(gCoordinator.GetComponentType<SpriteComponent>());
+        signature.set(gCoordinator.GetComponentType<ColliderComponent>());
         gCoordinator.SetSystemSignature<SpriteSystem>(signature);
     }
 
@@ -79,6 +80,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     gCoordinator.AddComponent<TransformComponent>(player,TransformComponent());
 
     gCoordinator.AddComponent<SpriteComponent>(player,SpriteComponent("images/player.png"));
+    gCoordinator.AddComponent<ColliderComponent>(player,ColliderComponent());
 
     spriteSystem->init();
 
