@@ -10,6 +10,8 @@
 #include "ECS/TransformComponent.hpp"
 #include "ECS/SpriteComponent.hpp"
 #include "ECS/SpriteSystem.hpp"
+#include "ECS/ColliderComponent.hpp"
+
 
 
 

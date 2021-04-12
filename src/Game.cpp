@@ -60,6 +60,7 @@ void Game::init(char *title, int xpos, int ypos, int width, int height, bool ful
     gCoordinator.Init();
     gCoordinator.RegisterComponent<TransformComponent>();
     gCoordinator.RegisterComponent<SpriteComponent>();
+    gCoordinator.RegisterComponent<ColliderComponent>();
 
     spriteSystem = gCoordinator.RegisterSystem<SpriteSystem>();
     {
