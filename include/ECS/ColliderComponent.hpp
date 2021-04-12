@@ -3,6 +3,7 @@
 
 #include "Coordinator.hpp"
 #include <SDL2/SDL.h>
+
 class ColliderComponent
 {
     SDL_Rect collider;
