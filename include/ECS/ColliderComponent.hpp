@@ -12,6 +12,7 @@ class ColliderComponent
 
     ColliderComponent()
     {}
+
     init(TransformComponent& transform)
     {
         this->transfor m= transform;
