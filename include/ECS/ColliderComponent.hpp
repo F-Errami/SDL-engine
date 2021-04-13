@@ -28,8 +28,5 @@ public:
     }
 
 
-
-
-
 };
 #endif //SDL_ENGINE_COLLIDERCOMPONENT_HPP
