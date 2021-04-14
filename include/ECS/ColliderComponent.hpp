@@ -15,18 +15,11 @@ public:
 
 
 
-    void init(TransformComponent& transform)
-    {
-        this->transform= transform;
-    }
+    void init(TransformComponent& transform);
 
-    void update()
-    {
-        collider.x = transform.position.x;
-        collider.y = transform.position.y;
-        collider.w = transform.width * transform.scale;
-        collider.h = transform.height * transform.scale;
-    }
+
+    void update();
+
 
 
 };
