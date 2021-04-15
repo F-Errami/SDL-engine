@@ -20,7 +20,5 @@ public:
 
     void update();
 
-
-
 };
 #endif //SDL_ENGINE_COLLIDERCOMPONENT_HPP
