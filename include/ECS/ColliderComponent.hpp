@@ -11,11 +11,11 @@ class ColliderComponent
 public:
     SDL_Rect collider;
     std::string tag;
-    TransformComponent& transform;
+   // TransformComponent& transform;
 
 
 
-    void init(TransformComponent& transform);
+  //  void init(TransformComponent& transform);
 
 
     void update();
