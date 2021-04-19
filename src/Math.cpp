@@ -2,6 +2,7 @@
 //========================================================================
 //                           Vector2D
 //========================================================================
+
 Vector2D::Vector2D()
 {
     x = 0;
@@ -10,6 +11,7 @@ Vector2D::Vector2D()
 Vector2D::Vector2D(float p_x, float p_y):
 x(p_x),y(p_y)
 {}
+
 
 Vector2D& Vector2D::Add(const Vector2D &vect)
 {
